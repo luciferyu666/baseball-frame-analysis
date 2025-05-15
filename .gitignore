@@ -1,0 +1,6 @@
+# 最常見範例
+__pycache__/
+*.py[cod]
+.env
+.vscode/
+*.log

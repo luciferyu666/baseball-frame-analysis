@@ -1,0 +1,4 @@
+local_output: outputs
+cloud:
+  provider: s3
+  bucket: ""
