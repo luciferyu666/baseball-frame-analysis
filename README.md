@@ -1,40 +1,39 @@
-# ⚾️ Baseball Frame Analysis — End‑to‑End System
+# ⚾️ 棒球逐幀分析系統（Baseball Frame Analysis）— 端到端系統
 
-A modular, container‑ready pipeline for **frame‑level video analytics** in baseball,
-covering object detection (YOLOv8), pose estimation (MediaPipe), OCR, event aggregation,
-database storage (TimescaleDB) and real‑time REST APIs (FastAPI).
+此專案是一個模組化、容器化的端到端系統，專為棒球領域的**逐幀影片分析**而設計，包含物件偵測（YOLOv8）、姿勢估測（MediaPipe）、光學字元辨識（OCR）、事件整合、資料庫儲存（TimescaleDB）與即時 REST API（FastAPI）。
 
-## 🗂️ Project Layout
+## 🗂️ 專案結構
 
 ```
 .
-├─ docker/            # Container build files & compose stack
-├─ src/               # Core source code (modular layers)
-├─ data/              # Raw videos, processed frames, outputs, model weights
-├─ mlruns/            # MLflow experiment tracking
-├─ notebooks/         # Exploratory analysis & visualisation
-└─ tests/             # Unit & integration test suites
+├─ docker/            # 容器建置檔案與 Docker Compose 堆疊
+├─ src/               # 核心原始碼（模組化分層架構）
+├─ data/              # 原始影片、處理後影格、輸出資料、模型權重
+├─ mlruns/            # MLflow 實驗追蹤資料
+├─ notebooks/         # 探索性分析與視覺化 Jupyter Notebooks
+└─ tests/             # 單元測試與整合測試套件
 ```
 
-## 🚀 Quick Start
+## 🚀 快速開始
 
 ```bash
-# 1. Clone repo & enter
+# 1. 複製專案並進入目錄
 git clone <repo-url> && cd baseball-frame-analysis
 
-# 2. Build & start services (GPU)
+# 2. 建置並啟動服務（GPU 環境）
 docker compose -f docker/docker-compose.yml up -d --build
 
-# 3. Run pipeline on sample video
+# 3. 使用範例影片執行分析流程
 python -m src run_pipeline --video data/raw/sample.mp4 --out data/outputs
 ```
 
-The full guide, including training pipelines, database dashboards
-and API docs, is available in `/docs/architecture.md`.
+完整的使用指南（包含模型訓練流程、資料庫儀表板與 API 文件），請參閱：
 
-## 🛠️ Environment
+`/docs/architecture.md`
 
-Copy `.env.example` to `.env` and set:
+## 🛠️ 環境設定
+
+將 `.env.example` 複製為 `.env` 並設定以下參數：
 
 ```env
 DATABASE_URI=postgresql+asyncpg://postgres:postgres@db:5432/baseball
@@ -42,6 +41,6 @@ MLFLOW_TRACKING_URI=file:///workspace/mlruns
 CUDA_VISIBLE_DEVICES=0
 ```
 
-## 📄 License
+## 📄 授權條款
 
-Released under the MIT License. See `LICENSE` for details.
+本專案以 MIT 授權條款釋出。詳情請參考 `LICENSE` 檔案。
