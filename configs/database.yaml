@@ -1,0 +1,10 @@
+postgresql:
+  host: db
+  port: 5432
+  user: postgres
+  password: postgres
+  database: baseball
+  min_connections: 1
+  max_connections: 10
+  statement_timeout: 30000
+  application_name: frame-analysis-service

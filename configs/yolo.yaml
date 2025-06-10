@@ -1,0 +1,8 @@
+model: yolov8.onnx
+img_size: 640
+confidence_threshold: 0.25
+iou_threshold: 0.45
+device: cuda:0
+max_det: 300
+classes: null
+agnostic_nms: false

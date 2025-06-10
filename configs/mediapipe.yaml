@@ -1,0 +1,9 @@
+pose:
+  enable: true
+  model_complexity: 1
+  detection_confidence: 0.5
+  tracking_confidence: 0.5
+swing_analysis:
+  min_swing_duration_ms: 120
+  max_swing_duration_ms: 500
+  angle_threshold_deg: 35

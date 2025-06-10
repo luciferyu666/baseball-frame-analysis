@@ -1,0 +1,27 @@
+# YOLOv8 inference container with CUDA + ONNX Runtime
+FROM nvidia/cuda:12.4.1-runtime-ubuntu22.04
+
+LABEL maintainer="baseball-ai-team"
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        python3 \
+        python3-pip \
+        git && \
+    pip3 install --no-cache-dir \
+        onnxruntime-gpu==1.17.3 \
+        ultralytics==8.1.14 && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+
+# (Optional) copy model weights at build time
+# COPY ../data/models/yolo /models
+
+COPY yolo_entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENV YOLO_MODEL_PATH=/models/yolov8.onnx
+
+ENTRYPOINT ["/entrypoint.sh"]

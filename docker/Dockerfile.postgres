@@ -1,0 +1,11 @@
+# PostgreSQL + TimescaleDB for event storage
+FROM timescale/timescaledb:2.15.0-pg16
+
+LABEL maintainer="baseball-ai-team"
+
+ENV POSTGRES_DB=baseball \
+    POSTGRES_USER=postgres \
+    POSTGRES_PASSWORD=postgres
+
+# Enable TimescaleDB extension at init
+COPY init-db.sql /docker-entrypoint-initdb.d/001-init.sql

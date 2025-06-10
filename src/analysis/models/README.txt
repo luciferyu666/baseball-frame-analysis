@@ -1,1 +1,0 @@
-Place your yolov8_balls.pt here or set model.yaml accordingly.

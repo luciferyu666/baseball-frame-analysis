@@ -1,2 +1,0 @@
-weights: src/analysis/models/yolov8_balls.pt
-confidence_threshold: 0.25

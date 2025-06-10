@@ -1,8 +1,27 @@
-# 最常見範例
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
-.env
-.vscode/
-*.log
+*.so
 
-sample/demo.mp4
+# Virtual environment
+.venv/
+env/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# MLflow artifacts
+mlruns/
+
+# Data outputs
+data/processed/
+data/outputs/
+
+# Model weights
+data/models/
+
+# VSCode
+.vscode/
+
+# OS files
+.DS_Store

@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  ingest:
+    build:
+      context: .
+      dockerfile: Dockerfile.opencv-ffmpeg
+    container_name: ingest
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    runtime: nvidia
+    volumes:
+      - ../data/raw:/data/raw:ro
+      - ../data/processed:/data/processed
+    command: ["sleep", "infinity"]
+
+  yolo:
+    build:
+      context: .
+      dockerfile: Dockerfile.yolo
+    container_name: yolo
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - YOLO_MODEL_PATH=/models/yolov8.onnx
+    runtime: nvidia
+    volumes:
+      - ../data/processed:/data/processed:ro
+      - ../data/models/yolo:/models
+    depends_on:
+      - ingest
+    command: ["sleep", "infinity"]
+
+  training:
+    build:
+      context: .
+      dockerfile: Dockerfile.training
+    container_name: training
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - MLFLOW_TRACKING_URI=file:///mlruns
+    runtime: nvidia
+    volumes:
+      - ../data:/data
+      - ../mlruns:/mlruns
+      - ../data/models:/models
+    command: ["sleep", "infinity"]
+
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:

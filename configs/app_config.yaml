@@ -1,0 +1,10 @@
+app:
+  name: baseball-frame-analysis
+  version: 1.0.0
+  mode: development
+  timezone: Asia/Taipei
+  debug: true
+env:
+  CUDA_VISIBLE_DEVICES: '0'
+  MLFLOW_TRACKING_URI: file:///mlruns
+paths_file: paths.yaml

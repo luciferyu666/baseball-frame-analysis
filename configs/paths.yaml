@@ -1,0 +1,12 @@
+root: /workspace
+data:
+  raw_video: /data/raw
+  processed_frames: /data/processed
+  outputs: /data/outputs
+  models: /data/models
+training:
+  train_dir: /data/train
+  val_dir: /data/val
+  checkpoints: /data/models/checkpoints
+logs:
+  dir: /workspace/logs

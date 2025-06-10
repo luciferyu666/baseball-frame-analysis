@@ -1,0 +1,13 @@
+hyperparameters:
+  epochs: 50
+  batch_size: 16
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  optimizer: AdamW
+data:
+  train_dir: ${paths.training.train_dir}
+  val_dir: ${paths.training.val_dir}
+  num_workers: 4
+output:
+  checkpoints_dir: ${paths.training.checkpoints}
+  mlflow_experiment: baseball_yolo_retrain
